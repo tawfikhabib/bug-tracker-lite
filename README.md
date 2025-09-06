@@ -43,4 +43,4 @@ If you discover a security vulnerability, please open an issue or contact the ma
 
 ## License
 
-Bug Tracker Lite is open-sourced software licensed under the [MIT license](./LICENSE).
+Bug Tracker Lite is open-sourced software licensed under the [MIT license].
