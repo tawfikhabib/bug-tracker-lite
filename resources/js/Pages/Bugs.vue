@@ -15,7 +15,7 @@
 
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-xl font-semibold">All Bugs</h2>
-      <button @click="loadBugs" class="bg-blue-600 text-white px-4 py-2 rounded">🔄 Refresh</button>
+  <button @click="() => loadBugs(1)" class="bg-blue-600 text-white px-4 py-2 rounded">🔄 Refresh</button>
     </div>
 
     <div class="flex gap-4 mb-6">
@@ -61,7 +61,6 @@ import CreateBugModal from '../Components/CreateBugModal.vue'
 
 const showModal = ref(false)
 const store = useBugStore()
-const bugs = store.bugs
 
 const projects = ref([])
 const users = ref([])
@@ -97,7 +96,7 @@ const selectedPriority = ref('')
 const searchQuery = ref('')
 
 const filteredBugs = computed(() => {
-  return bugs.filter(bug => {
+  return store.bugs.filter(bug => {
     const statusMatch = selectedStatus.value ? bug.status === selectedStatus.value : true
     const priorityMatch = selectedPriority.value ? bug.priority === selectedPriority.value : true
     const searchMatch = searchQuery.value

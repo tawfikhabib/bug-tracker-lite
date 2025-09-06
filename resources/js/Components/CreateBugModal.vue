@@ -45,6 +45,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { useBugStore } from '../stores/bug'
+import { useToast } from 'vue-toastification'
 
 const props = defineProps({
   visible: Boolean,
@@ -58,6 +59,7 @@ const props = defineProps({
   }
 })
 
+const toast = useToast()
 const emit = defineEmits(['close'])
 
 const form = ref({
@@ -72,6 +74,7 @@ const store = useBugStore()
 
 const submit = async () => {
   await axios.post('/api/bugs', form.value)
+  toast.success('✅ Bug created successfully!')
   store.load() // reload bugs
   emit('close')
 }

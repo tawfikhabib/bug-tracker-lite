@@ -16,3 +16,5 @@ Route::get('/users', function () {
 
 Route::apiResource('bugs', BugController::class);
 Route::apiResource('projects', ProjectController::class);
+Route::delete('/bugs/{bug}', [BugController::class, 'destroy']);
+Route::put('/bugs/{bug}', [BugController::class, 'update']);
